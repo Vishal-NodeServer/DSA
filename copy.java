@@ -1,3 +1,4 @@
+//copy the array in java  by vishal suthar - IT head / cisco engineer 
 public class copyarr {
     public static void main(String[] args) {
         int[] originalArray = {1, 2, 3, 4, 5};
