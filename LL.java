@@ -84,6 +84,26 @@ class LL {
         secondLastNode.next = null;
     }
 
+    public void deleteAtIndex(int index) {
+        Node temp = head;
+        if (head == null) {
+          System.out.println("Linked List is Empty");
+        } else if (index == 1) {
+          deleteFirstNode();
+        } else {
+          for (int i = 2; i <= index - 1; i++) {
+            temp = temp.next;
+          }
+      
+          if (temp == null) {
+            System.out.println("Invalid location to delete the Node!");
+          } else {
+            System.out.println("Element Delete is : " + temp.next.value);
+            temp.next = temp.next.next;
+          }
+        }
+      }
+
     public void printlist(){
 
         if(head == null){
@@ -101,6 +121,30 @@ class LL {
 
 
     }
+
+    public void insertAtIndex(String data, int index){
+        Node newNode = new Node(data);
+        Node temp = head;
+
+        if(index == 1){
+            addFirst(data);
+        }
+
+        else{
+            for(int i = 2; i <= index -1; i++){
+                temp = temp.next;
+            }
+            if(temp == null){
+                System.out.println("location in valid");
+            }
+            else{
+                newNode.next = temp.next;
+                temp.next = newNode;
+            }
+        }
+    }
+
+    
 
     public int getSize(){
         return size;
@@ -123,7 +167,8 @@ class LL {
         list.deleteAtfirst();
         list.deleteAtLast();
         list.printlist();
-
+        list.insertAtIndex("jayveer", 3);
+        list.printlist();
         System.out.println(list.getSize());
         //Display
         //delete
