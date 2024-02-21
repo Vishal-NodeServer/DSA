@@ -1,15 +1,23 @@
 class LL {
     Node head;
+    private int size ;
+
+    LL() {
+        size = 0;
+
+    }
 
     class Node{
         String data;
         Node next;
+
         
 
         //create single node [data] -> [data]
         Node(String data){
             this.data = data;
             this.next = null;  //in the begning the first node is null ://
+            size++;
         }
     }
  //insert at first
@@ -38,10 +46,42 @@ class LL {
         Node currNode = head;  //node that is head update every time 
          while(currNode.next != null){ //currNode jab tak null nhi hojata
           
-            currNode = currNode.next;  //null --> head bnaya hai abhi k liye
+            currNode = currNode.next;  //current.next kya hai null --> head bnaya hai abhi k liye
         } 
 
         currNode.next = newNode;  //null meh node horha hai
+    }
+
+    public void deleteAtfirst() {
+        if(head == null){
+            System.out.println("list is empty");
+        }
+       size--;
+        head = head.next;
+
+    }
+
+    public void deleteAtLast(){
+        if(head == null){
+            System.out.println("list is empty");
+        }
+        size--;
+
+        if(head.next == null){
+            head = null;
+            return;
+        }
+
+        Node secondLastNode = head;
+        Node lastNode = head.next;
+        while(lastNode.next != null) {
+           
+            lastNode = lastNode.next;
+            secondLastNode = secondLastNode.next;
+
+            
+        }
+        secondLastNode.next = null;
     }
 
     public void printlist(){
@@ -62,6 +102,10 @@ class LL {
 
     }
 
+    public int getSize(){
+        return size;
+    }
+
 
 
     public static void main(String args[]){
@@ -73,7 +117,14 @@ class LL {
         list.addFirst("vijay");
         list.addFirst("chetan");
         list.addFirst("roshni");
+        list.addLast("jalaj");
         list.printlist();
+
+        list.deleteAtfirst();
+        list.deleteAtLast();
+        list.printlist();
+
+        System.out.println(list.getSize());
         //Display
         //delete
         //Size
